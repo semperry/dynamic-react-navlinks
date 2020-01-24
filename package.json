@@ -1,7 +1,7 @@
 {
   "name": "dynamic-react-navlinks",
-  "version": "1.0.1",
-  "description": "Generates dynamic NavLinks based on BrowserRouter Routes",
+  "version": "2.0.0",
+  "description": "Generates dynamic navbar based on BrowserRouter Routes",
   "main": "index.js",
   "keywords": [
     "react-router",
@@ -9,7 +9,10 @@
     "routes",
     "routing",
     "dynamic",
-    "links"
+    "links",
+    "navlinks",
+    "navbar",
+    "auto-navbar"
   ],
   "author": "Ryan Curtis",
   "license": "ISC",

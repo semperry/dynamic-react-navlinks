@@ -1,38 +1,67 @@
-const NavLink = require("react-router-dom").NavLink;
 const React = require("react");
+const NavLink = require("react-router-dom").NavLink;
 
-export class GenerateRoutesArray {
-  // TODO
-  // Validations for checking if array
-  static toArray = (...routes) => {
-    // this.routes = routes[0];
+function DynamicNavbar(props) {
+  const routes = props.children;
 
-    // this.paths = routes[0].map(route => {
-    //   return route.props.path;
-    // });
-
-    return [...routes][0];
+  const defaultWrapperStyles = {
+    display: "flex",
+    justifyContent: "center",
+    width: "100vw",
+    alignItems: "center",
+    height: "70px"
   };
 
-  static textFromRoute = route => {
-    // TODO
-    // Logic for hyphens and nested routes
+  const setNavbarStyles = props.navbarStyles
+    ? { ...defaultWrapperStyles, ...props.navbarStyles }
+    : { ...defaultWrapperStyles };
+
+  const defaultLinkStyles = {
+    textDecoration: "none",
+    width: "100px",
+    fontSize: "2rem",
+    fontWeight: "500"
+  };
+
+  const textFromLink = path => {
     const strippedSlash =
-      route.split("/").join("") === "" ? "home" : route.split("/").join("");
-    const capitalized =
-      strippedSlash.split("")[0].toUpperCase() + strippedSlash.slice(1);
+      path.split("/").join("") === "" ? "home" : path.split("/").join("");
 
-    return capitalized;
+    return strippedSlash.split("")[0].toUpperCase() + strippedSlash.slice(1);
   };
-}
 
-export const dynamicLink = (route, linkText) => {
-  // TODO
-  // active className prop
-  linkText = linkText || GenerateRoutesArray.textFromRoute(route);
+  const renderNavbar = () => {
+    return routes.map(route => {
+      const { path, linkStyles, activeClass, linkText } = route.props;
+
+      const setLinkStyles = linkStyles
+        ? { ...defaultLinkStyles, ...linkStyles }
+        : { ...defaultLinkStyles };
+
+      if (!path.includes("/:")) {
+        return (
+          <NavLink
+            key={path}
+            to={`${path}`}
+            style={setLinkStyles}
+            activeClassName={activeClass || "active"}
+            className="dynamic-nav-link"
+          >
+            {linkText || textFromLink(path)}
+          </NavLink>
+        );
+      }
+    });
+  };
+
   return (
-    <div key={route}>
-      <NavLink to={route}>{linkText}</NavLink>
+    <div>
+      <div className="react-dynamic-navbar" style={setNavbarStyles}>
+        {renderNavbar()}
+      </div>
+      {routes}
     </div>
   );
-};
+}
+
+export default DynamicNavbar;
