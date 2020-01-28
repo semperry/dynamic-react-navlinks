@@ -1,6 +1,6 @@
 {
   "name": "dynamic-react-navlinks",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Generates dynamic navbar based on BrowserRouter Routes",
   "main": "build/index.js",
   "scripts": {

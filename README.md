@@ -1,6 +1,6 @@
 # React Dynamic NavLinks
 
-**This package allows you to redner dynamic NavLinks and a basic navbar from the Routes within a react-router-dom BrowserRouter component.**
+**This package allows you to render dynamic NavLinks and a basic navbar from the Routes within a react-router-dom BrowserRouter component.**
 
 **It will render the proper navigation link based on the path in the given route's props. Link text is generated from the path as well, but can be customized.**
 
@@ -42,7 +42,7 @@ _Note: It will not render links for nested Routes_
 
 ## Styles
 
-### The DynamicNavbar and NavLinks render with default style objects. These styles can be kept, or they can be overwritten using props (listed below in the "Props" section). The default styles are:
+### The DynamicNavbar and NavLinks render with a default style object. These styles can be kept, or they can be overwritten using props (listed below in the "Props" section). The default styles are:
 
 **_Navbar:_**
 
@@ -73,23 +73,23 @@ _Note on Styles: Styles are all inline._
 
 1. **DynamicNavbar**
 
-- ##### These Props directly relate to the Navbar layout.
+- These Props directly relate to the Navbar layout.
 
 - **_navbarStyles_**
-- Use the navbarStyles Props to overwrite the defaults. Pass in an object with standard JSX syntax styles.
+- Use the _navbarStyles_ prop to overwrite the defaults. Pass in an object with standard JSX syntax styles.
   > <DynamicNavbar navbarStyles={{ backgroundColor: 'black' }} />
 
 2. **Route Component**
 
-- ##### Route Component Props have effect on the NavLinks that are returned in your dynamic navbar.
+- Route Component Props have effect on the NavLinks that are returned in your dynamic navbar.
 
 - **_linkText_** Prop (optional):
-- Pass linkText prop to use a custom link name instead of the auto generated text (this defaults to a formatted version of the path).
+- Pass _linkText_ prop to use a custom link name instead of the auto generated text (this defaults to a formatted version of the path).
   > <Route path="/blog-detail" component={Blog} />
   > Returns "Blog-detail" as the link.
 - The above code would create a default NavLink of 'Blog-detail'. Passing in the "linkText" prop allows you to define what text to use for that particular link.
   > <Route linkText="blog" path="/blog-detail" component={Blog} />
-  > Returns "Blog" as the link.
+  > Returns "blog" as the link.
 - If no linkText prop is passed for a Route with "/" as its path, the link will default to "Home"
   Ex:
 
@@ -97,7 +97,7 @@ _Note on Styles: Styles are all inline._
   > Returns "Home" as the link.
 
 - **_linkStyles_** Prop (optional):
-- Pass the linkStyles props to the Route component with an object of JSX styles.
+- Pass the _linkStyles_ prop to the Route component with an object of JSX styles.
   > <Route exact path="/" linkStyles={{ fontSize: "3rem", color: "white"}} component={Home} />
 - This will overwrite the default linkStyles given by the HOC.
 
@@ -105,15 +105,16 @@ _Note on Styles: Styles are all inline._
 
 **_activeClass_** Prop (optional):
 
-- The activeClass props works with react-router-dom's NavLink activeClassName prop.
+- The _activeClass_ prop works with react-router-dom's NavLink activeClassName prop.
 - By default, NavLinks come with the "active" className when active.
-- Passing the activeClass props allows you to define a custom name.
+- Passing the _activeClass_ prop allows you to define a custom name.
   > <Route exact path="/" activeClass="active-home-link" component={Home} />
   > Appends "active-home-link" to the element's class list when active, instead of "active"
+  > Output => <a href="/" class="dynamic-nav-link active-home-link"></a>
 
 _Note: NavLinks here are returned with a className of "dynamic-nav-link". The activeClass appends to that class list: "dynamic-nav-link active"._
 
-### To make new links, simply add a new Route component to your array.
+### To make new links, simply add a new Route component to your Router.
 
 ### Standard BrowserRouter functionality is persisted. Route guards, render props, etc work the same as normal.
 
