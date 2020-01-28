@@ -1,2 +1,4 @@
-node_modules
-versions
+webpack.local.config.js
+  webpack.production.config.js
+  .eslintrc
+  .gitignore

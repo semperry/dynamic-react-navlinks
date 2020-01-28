@@ -22,19 +22,17 @@ import DynamicNavbar from "dynamic-react-navlinks"
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <BrowserRouter>
-      <Switch>
         <DynamicNavbar>
           <Route exact path="/" component={App} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
         </DynamicNavbar>
-      </Switch>
   </BrowserRouter>,
   rootElement
 );
 ```
 
-**DynamicNavbar returns a navbar in its own div tag. The div has a className of "react-dynamic-navbar", and returns with NavLinks to each route. This package will exclude any routes with url params**
+**DynamicNavbar returns a navbar in its own div tag. The div has a className of "react-dynamic-navbar", and returns with NavLinks to each route. The routes returned will be as children to the React Router Dom Switch component. This package will exclude any routes with url params**
 
 > <Route path="somePath/:slug" component={SomeComponent} />
 

@@ -1,8 +1,13 @@
 {
   "name": "dynamic-react-navlinks",
-  "version": "2.0.0",
+  "version": "2.0.3",
   "description": "Generates dynamic navbar based on BrowserRouter Routes",
-  "main": "index.js",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
+  },
   "keywords": [
     "react-router",
     "react-router-dom",
@@ -16,8 +21,23 @@
   ],
   "author": "Ryan Curtis",
   "license": "ISC",
+  "peerDependencies": {
+    "react": "^16.4.0",
+    "react-router-dom": "^5.1.2",
+    "react-dom": "^16.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "babel-runtime": "^6.26.0"
+  },
   "dependencies": {
-    "react": "^16.12.0",
-    "react-router-dom": "^5.1.2"
+    "react-scripts": "1.1.4"
   }
 }

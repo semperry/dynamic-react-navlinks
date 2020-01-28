@@ -1,7 +1,7 @@
-const React = require("react");
-const NavLink = require("react-router-dom").NavLink;
+import React from "react";
+import { BrowserRouter, Switch, NavLink } from "react-router-dom";
 
-function DynamicNavbar(props) {
+const DynamicNavbar = props => {
   const routes = props.children;
 
   const defaultWrapperStyles = {
@@ -42,7 +42,7 @@ function DynamicNavbar(props) {
         return (
           <NavLink
             key={path}
-            to={`${path}`}
+            to={path}
             style={setLinkStyles}
             activeClassName={activeClass || "active"}
             className="dynamic-nav-link"
@@ -55,13 +55,15 @@ function DynamicNavbar(props) {
   };
 
   return (
-    <div>
-      <div className="react-dynamic-navbar" style={setNavbarStyles}>
-        {renderNavbar()}
+    <BrowserRouter>
+      <div>
+        <div className="react-dynamic-navbar" style={setNavbarStyles}>
+          {renderNavbar()}
+        </div>
+        <Switch>{routes}</Switch>
       </div>
-      {routes}
-    </div>
+    </BrowserRouter>
   );
-}
+};
 
 export default DynamicNavbar;
