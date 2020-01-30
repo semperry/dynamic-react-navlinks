@@ -6,10 +6,11 @@ const DynamicNavbar = props => {
 
   const defaultWrapperStyles = {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-around",
     width: "100vw",
     alignItems: "center",
-    height: "70px"
+    height: "70px",
+    marginBottom: "35px"
   };
 
   const setNavbarStyles = props.navbarStyles
@@ -31,9 +32,8 @@ const DynamicNavbar = props => {
   };
 
   const renderNavbar = () => {
-    return routes.map(route => {
-      const { path, linkStyles, activeClass, linkText } = route.props;
-
+    if (!Array.isArray(routes)) {
+      const { path, linkStyles, activeClass, linkText } = routes.props;
       const setLinkStyles = linkStyles
         ? { ...defaultLinkStyles, ...linkStyles }
         : { ...defaultLinkStyles };
@@ -51,7 +51,29 @@ const DynamicNavbar = props => {
           </NavLink>
         );
       }
-    });
+    } else {
+      return routes.map(route => {
+        const { path, linkStyles, activeClass, linkText } = route.props;
+
+        const setLinkStyles = linkStyles
+          ? { ...defaultLinkStyles, ...linkStyles }
+          : { ...defaultLinkStyles };
+
+        if (!path.includes("/:")) {
+          return (
+            <NavLink
+              key={path}
+              to={path}
+              style={setLinkStyles}
+              activeClassName={activeClass || "active"}
+              className="dynamic-nav-link"
+            >
+              {linkText || textFromLink(path)}
+            </NavLink>
+          );
+        }
+      });
+    }
   };
 
   return (

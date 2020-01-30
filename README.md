@@ -49,10 +49,11 @@ _Note: It will not render links for nested Routes_
 ```
 defaultWrapperStyles = {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-around",
     width: "100vw",
     alignItems: "center",
-    height: "70px"
+    height: "70px",
+    marginBottom: "35px"
   };
 ```
 
